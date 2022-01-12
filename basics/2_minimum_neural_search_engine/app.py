@@ -1,4 +1,5 @@
-from jina import Document, DocumentArray, Flow
+from jina import Flow
+from docarray import Document, DocumentArray
 
 # A DocumentArray is a list of Documents.
 docs = DocumentArray(
@@ -47,4 +48,3 @@ print("-------------------\n")
 for match in matches:
     # Print the text of each match (from `Document.text`)
     print(f"- {match.text}")
-    print(match.embedding)

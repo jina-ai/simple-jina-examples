@@ -3,13 +3,12 @@
 # 2. Extract text and metadata from the csv
 # 3. Rewrite print_search_results() in helper.py to show "Title" metadata tag
 
-from jina import Document, DocumentArray, Flow
-from jina.types.document.generators import from_csv
+from jina import Flow
+from docarray import Document, DocumentArray
 from helper import print_search_results
 
-with open("data/anime.csv") as file:
-    # Map "Description" field to our `Document.text`
-    docs = DocumentArray(from_csv(file, field_resolver={"Description": "text"}))
+# Map "Description" field to our `Document.text`
+docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "text"})
 
 flow = (
     Flow()

@@ -3,7 +3,8 @@
 # 1. Move some things to helper.py to keep app.py light
 # 2. Use "uses_with", "uses_metas", and "volumes" to pass more parameters to our Executors
 
-from jina import Document, Flow
+from jina import Flow
+from docarray import Document, DocumentArray
 from helper import docs, print_search_results
 
 flow = (
