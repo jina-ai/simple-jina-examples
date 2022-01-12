@@ -24,7 +24,7 @@ Each step adds another small feature on top of the previous step, so be sure to 
 3. `cd basics/1_minimum_example`
 4. `python app.py`
 
-Then take a look at the code. The apps in themselves do very little, but slowly build up to a more complex app. After you've finished `1_minimum_example`, move onto section 2 and so on.
+Then take a look at the code. The apps in themselves do very little, but slowly build up to a more complex app. After you've finished the first section, move onto section 2 and so on.
 
 ## Troubleshooting
 
@@ -47,4 +47,4 @@ Also, [stop any Jina Docker containers](https://linuxhint.com/stop_docker_contai
 
 ### I'm still having trouble!
 
-- Join our [Discord](https://discord.jina.ai) and ask there.
+- Join our [Slack](https://slack.jina.ai) and ask there.

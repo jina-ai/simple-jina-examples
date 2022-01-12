@@ -2,13 +2,12 @@
 # 1. Use "from_csv" to load Documents
 # 2. Remove our original "docs" DocumentArray
 
-from jina import Document, DocumentArray, Flow
-from jina.types.document.generators import from_csv
+from jina import Flow
+from docarray import Document, DocumentArray
 from helper import print_search_results
 
 # Pull Documents from a CSV file. For each line of the file, create one Document where `Document.text` comes from the line's content.
-with open("data.csv") as file:
-    docs = DocumentArray(from_csv(file))
+docs = DocumentArray.from_csv("data.csv")
 
 flow = (
     Flow()

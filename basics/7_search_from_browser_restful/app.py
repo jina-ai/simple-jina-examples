@@ -1,16 +1,11 @@
-# In this example we do the following:
-# 1. Break indexing and searching into two seperate functions
-# 2. Set a command line argument to run one or other other
-#
-# This means we can create the index ONCE and search it many times
-
-from jina import Document, DocumentArray, Flow
-from docarray.document.generators import from_csv
+from jina import Flow
+from docarray import Document, DocumentArray
 from helper import print_search_results
 import sys
 
-with open("data/anime.csv") as file:
-    docs = DocumentArray(from_csv(file, field_resolver={"Description": "text"}))
+PORT = 12345 # Port for RESTful interface
+
+docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "text"})
 
 flow = (
     Flow()
@@ -40,6 +35,13 @@ def search():
         response = flow.search(inputs=query, return_results=True)
 
     print_search_results(response)
+
+def search_restful():
+    with flow:
+        flow.protocol = "http"
+        flow.port_expose = PORT
+        # Keep Flow open until terminated by user
+        flow.block()
 
 
 argument = sys.argv[1]

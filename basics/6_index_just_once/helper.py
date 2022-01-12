@@ -1,4 +1,4 @@
-from jina import Document, DocumentArray
+from docarray import Document, DocumentArray
 
 
 def print_search_results(response, number=5):

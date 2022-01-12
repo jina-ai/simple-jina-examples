@@ -1,4 +1,4 @@
-from jina import Document, DocumentArray
+from docarray import Document, DocumentArray
 
 docs = DocumentArray(
     [
