@@ -32,7 +32,7 @@ def index():
 def search():
     with flow:
         query = Document(text=input("Please enter your search term: "))
-        response = flow.search(inputs=query, return_results=True)
+        response = flow.search(inputs=query)
 
     print_search_results(response)
 
