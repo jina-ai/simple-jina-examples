@@ -11,7 +11,7 @@ flow = (
     Flow()
     .add(
         uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md"},
+        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'},
         name="encoder",
         install_requirements=True
     )
