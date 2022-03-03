@@ -1,7 +1,7 @@
 from docarray import Document, DocumentArray
 
 
-def print_search_results(response, number=5):
+def print_search_results(docs, number=5):
     matches = docs[0].matches
 
     print("\nYour search results")
