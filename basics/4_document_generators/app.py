@@ -13,12 +13,12 @@ flow = (
     Flow()
     .add(
         uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md"},
+        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'},
         name="encoder",
         install_requirements=True
     )
     .add(
-        uses="jinahub+docker://SimpleIndexer",
+        uses="jinahub://SimpleIndexer",
         uses_metas={"workspace": "workspace"},
         volumes="./workspace:/workspace/workspace",
         name="indexer",
@@ -28,6 +28,6 @@ flow = (
 with flow:
     flow.index(inputs=docs)
     query = Document(text=input("Please enter your search term: "))
-    response = flow.search(inputs=query, return_results=True)
+    response = flow.search(inputs=query)
 
 print_search_results(response)

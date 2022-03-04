@@ -1,8 +1,8 @@
 from docarray import Document, DocumentArray
 
 
-def print_search_results(response):
-    matches = response[0].data.docs[0].matches
+def print_search_results(docs):
+    matches = docs[0].matches
 
     print("\nYour search results")
     print("-------------------\n")
