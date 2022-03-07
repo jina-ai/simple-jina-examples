@@ -37,8 +37,8 @@ with flow:
     query = Document(text=input("Please enter your search term: "))
     # Search the index, return similar matches, and store in `response`
     docs = flow.search(inputs=query)
-# Pull out the matches from all the other data in the response
 
+# Pull out the matches from all the other data in the response
 matches = docs[0].matches
 
 print("Your search results")
