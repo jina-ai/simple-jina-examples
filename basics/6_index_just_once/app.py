@@ -20,7 +20,7 @@ flow = (
         install_requirements=True
     )
     .add(
-        uses="jinahub://SimpleIndexer",
+        uses="jinahub://SimpleIndexer/v0.15",
         uses_metas={"workspace": "workspace"},
         volumes="./workspace:/workspace/workspace",
         name="indexer",

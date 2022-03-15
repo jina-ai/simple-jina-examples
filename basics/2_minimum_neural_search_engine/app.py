@@ -27,7 +27,7 @@ flow = (
     # Add indexer
     # When indexing it embeds embeddings in a graph
     # When searching it retrieves nearest neighbor to search term
-    .add(uses="jinahub://SimpleIndexer", install_requirements=True, name="indexer")
+    .add(uses="jinahub://SimpleIndexer/v0.15", install_requirements=True, name="indexer")
 )
 # Open Flow as context manager
 with flow:
