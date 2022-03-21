@@ -27,9 +27,8 @@ flow = (
     # Add indexer
     # When indexing it embeds embeddings in a graph
     # When searching it retrieves nearest neighbor to search term
-    .add(uses="jinahub://SimpleIndexer", install_requirements=True, name="indexer")
+    .add(uses="jinahub://SimpleIndexer/v0.15", install_requirements=True, name="indexer")
 )
-
 # Open Flow as context manager
 with flow:
     # Index our DocumentArray of Squid Game Documents
@@ -37,10 +36,10 @@ with flow:
     # Create a Document containing our search term. In this case, we take it from user's input
     query = Document(text=input("Please enter your search term: "))
     # Search the index, return similar matches, and store in `response`
-    response = flow.search(inputs=query, return_results=True)
+    docs = flow.search(inputs=query)
 
 # Pull out the matches from all the other data in the response
-matches = response[0].data.docs[0].matches
+matches = docs[0].matches
 
 print("Your search results")
 print("-------------------\n")
