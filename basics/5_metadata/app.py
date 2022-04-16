@@ -8,18 +8,15 @@ from docarray import Document, DocumentArray
 from helper import print_search_results
 
 # Map "Description" field to our `Document.text`
-docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "text"})
+docs = DocumentArray.from_csv("data/anime.csv")
 
 flow = (
     Flow()
     .add(
-        uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'}, 
-        name="encoder",
-        install_requirements=True
+         uses="jinahub+sandbox://CLIPTextEncoder",
     )
     .add(
-        uses="jinahub://SimpleIndexer/v0.15",
+        uses="jinahub+sandbox://SimpleIndexer",
         uses_metas={"workspace": "workspace"},
         volumes="./workspace:/workspace/workspace",
         name="indexer",

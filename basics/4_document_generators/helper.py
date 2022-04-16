@@ -1,5 +1,3 @@
-from docarray import Document, DocumentArray
-
 
 def print_search_results(docs):
     matches = docs[0].matches
