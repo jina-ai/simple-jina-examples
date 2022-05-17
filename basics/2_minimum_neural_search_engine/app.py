@@ -23,11 +23,11 @@ docs = DocumentArray(
 flow = (
     Flow()
     # Add encoder, to convert text to vector embeddings
-    .add(uses="jinahub+sandbox://TransformerTorchEncoder", name="encoder", install_requirements=True)
+    .add(uses="jinahub+sandbox://CLIPEncoder")
     # Add indexer
     # When indexing it embeds embeddings in a graph
     # When searching it retrieves nearest neighbor to search term
-    .add(uses="jinahub+sandbox://SimpleIndexer/v0.15", install_requirements=True, name="indexer")
+    .add(uses="jinahub+sandbox://SimpleIndexer")
 )
 # Open Flow as context manager
 with flow:

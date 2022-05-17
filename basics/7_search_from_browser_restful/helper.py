@@ -1,6 +1,3 @@
-from jina import Document, DocumentArray
-
-
 def print_search_results(docs, number=5):
     matches = docs[0].matches
 

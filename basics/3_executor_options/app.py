@@ -4,22 +4,16 @@
 # 2. Use "uses_with", "uses_metas", and "volumes" to pass more parameters to our Executors
 
 from jina import Flow
-from docarray import Document, DocumentArray
+from docarray import Document
 from helper import docs, print_search_results
        
 flow = (
     Flow()
     .add(
-        uses="jinahub+sandbox://CLIPTextEncoder",
+        uses="jinahub+sandbox://CLIPEncoder",
     )
     .add(
-        # Switch `uses` to pull from Docker, so we can pass `metas`
         uses="jinahub+sandbox://SimpleIndexer",
-        # Set workspace directory name
-        uses_metas={"workspace": "workspace"},
-        # Use external volume otherwise Docker can't see our index
-        volumes="./workspace:/workspace/workspace",
-        name="indexer",
     )
 )
 

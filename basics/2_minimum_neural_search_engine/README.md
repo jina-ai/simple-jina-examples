@@ -10,7 +10,7 @@ We're using 5 quotes selected from "Squid Game". This would be a terrible real w
 
 We're using two Executors from Jina Hub. Why Hub? It means we don't have to worry about writing them ourselves - we can just use them out of the box. We'll look at writing Executors in an intermediate unit. Our Executors are:
 
-- SpacyTextEncoder: Encodes each Document into vector embeddings using the SpaCy model. We run it in Docker because it has extra dependencies
+- CLIPEncoder: Encodes each Document into vector embeddings using the CLIP model. We run it on the cloud using [Jina's Executor Sandbox](https://medium.com/jina-ai/jina-executor-sandbox-processing-data-in-the-cloud-cb9f12ee4715) 
 - SimpleIndexer: 
   - When indexing: Builds a basic index of all the Documents (their text and embeddings)
   - When searching: Looks up the nearest neighbor to the search term

@@ -8,25 +8,22 @@ from docarray import Document, DocumentArray
 from helper import print_search_results
 
 # Map "Description" field to our `Document.text`
-docs = DocumentArray.from_csv("data/anime.csv")
+docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "text"})
 
 flow = (
     Flow()
     .add(
-         uses="jinahub+sandbox://CLIPTextEncoder",
+        uses="jinahub+sandbox://CLIPEncoder",
     )
     .add(
         uses="jinahub+sandbox://SimpleIndexer",
-        uses_metas={"workspace": "workspace"},
-        volumes="./workspace:/workspace/workspace",
-        name="indexer",
     )
 )
 
 with flow:
     flow.index(inputs=docs)
     query = Document(text=input("Please enter your search term: "))
-    response = flow.search(inputs=query)
+    response = flow.search(inputs=query, return_results=True)
 
 # This is re-written in helper.py
 print_search_results(response)
