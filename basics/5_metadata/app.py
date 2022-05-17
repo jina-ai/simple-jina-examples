@@ -13,23 +13,17 @@ docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "
 flow = (
     Flow()
     .add(
-        uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'}, 
-        name="encoder",
-        install_requirements=True
+        uses="jinahub+sandbox://CLIPEncoder",
     )
     .add(
-        uses="jinahub://SimpleIndexer/v0.15",
-        uses_metas={"workspace": "workspace"},
-        volumes="./workspace:/workspace/workspace",
-        name="indexer",
+        uses="jinahub+sandbox://SimpleIndexer",
     )
 )
 
 with flow:
     flow.index(inputs=docs)
     query = Document(text=input("Please enter your search term: "))
-    response = flow.search(inputs=query)
+    response = flow.search(inputs=query, return_results=True)
 
 # This is re-written in helper.py
 print_search_results(response)

@@ -14,13 +14,10 @@ docs = DocumentArray.from_csv("data/anime.csv", field_resolver={"Description": "
 flow = (
     Flow()
     .add(
-        uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'},
-        name="encoder",
-        install_requirements=True
+        uses="jinahub+sandbox://CLIPTextEncoder",
     )
     .add(
-        uses="jinahub://SimpleIndexer/v0.15",
+        uses="jinahub+sandbox://SimpleIndexer/v0.15",
         uses_metas={"workspace": "workspace"},
         volumes="./workspace:/workspace/workspace",
         name="indexer",

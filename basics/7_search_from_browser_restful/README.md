@@ -8,9 +8,9 @@ Note: Writing the actual front-end is outside the scope of this tutorial. Howeve
 
 ## Usage
 
-1. Run the `app.py` and keep it running in your terminal
+1. Run the `app.py` usign the command `python app.py search_restful` and keep it running in your terminal
 2. Open another terminal window
-3. Run `curl --request POST -d '{"data":["hello world"]}' -H 'Content-Type: application/json' 'http://0.0.0.0:12345/search'`. (`hello world` can be replaced with other search terms.)
+3. Run `curl --request POST 'http://localhost:12345/post' --header 'Content-Type: application/json' -d '{"data": [{"text": "hello world"}],"execEndpoint": "/search"}'`. (`hello world` can be replaced with other search terms.)
 4. You'll see the raw JSON output
 
 ## Tip

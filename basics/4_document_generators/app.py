@@ -2,6 +2,7 @@
 # 1. Use "from_csv" to load Documents
 # 2. Remove our original "docs" DocumentArray
 
+from urllib import request
 from jina import Flow
 from docarray import Document, DocumentArray
 from helper import print_search_results
@@ -12,13 +13,10 @@ docs = DocumentArray.from_csv("data.csv")
 flow = (
     Flow()
     .add(
-        uses="jinahub://SpacyTextEncoder",
-        uses_with={"model_name": "en_core_web_md", 'traversal_paths': 'r'},
-        name="encoder",
-        install_requirements=True
+        uses="jinahub+sandbox://CLIPEncoder",
     )
     .add(
-        uses="jinahub://SimpleIndexer/v0.15",
+        uses="jinahub+sandbox://SimpleIndexer",
         uses_metas={"workspace": "workspace"},
         volumes="./workspace:/workspace/workspace",
         name="indexer",
@@ -28,6 +26,6 @@ flow = (
 with flow:
     flow.index(inputs=docs)
     query = Document(text=input("Please enter your search term: "))
-    response = flow.search(inputs=query)
+    response = flow.search(inputs=query, request_size=3)
 
 print_search_results(response)
