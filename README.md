@@ -1,4 +1,4 @@
-# 🚧 This repository is depricated! 🚧
+# 🚧 This repository is deprecated! 🚧
 
 # Jina Simple Examples
 
