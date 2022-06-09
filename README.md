@@ -1,3 +1,5 @@
+# 🚧 This repository is depricated! 🚧
+
 # Jina Simple Examples
 
 ## What are these examples for?
